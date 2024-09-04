@@ -1,6 +1,15 @@
+import './index.css'
+
+import { BrowserRouter } from 'react-router-dom'
+
+import { PublicRouters } from './routes/public-routes'
+
 function App() {
   return (
-    <h1>Hello world.</h1>
+    <BrowserRouter>
+      <PublicRouters />
+    </BrowserRouter>
+
   )
 }
 
