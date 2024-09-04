@@ -45,11 +45,11 @@ export function Login() {
           Não tem uma conta?
           <Link
             to="/auth/register"
-            className="text-gray-400"
+            className="text-gray-400 hover:underline"
           >
           &nbsp;Crie a sua agora
           </Link>
-          &nbsp; e comece a organizar suas tarefas de forma eficiente.
+          &nbsp;e comece a organizar suas tarefas de forma eficiente.
           Cadastre-se
         </p>
       </div>
