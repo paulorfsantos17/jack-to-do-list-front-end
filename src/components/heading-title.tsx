@@ -2,7 +2,7 @@ interface HeadingTitleProps {
   title: string
   size?: 'small' | 'regular'
 }
-export default function HeadingTitle({
+export function HeadingTitle({
   title,
   size = 'regular',
 } : HeadingTitleProps) {
