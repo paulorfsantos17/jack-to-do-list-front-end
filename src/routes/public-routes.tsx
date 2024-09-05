@@ -1,16 +1,16 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import DefaultLayout from '../layout/default'
 import { Login } from '../pages/login'
 import { Register } from '../pages/register'
 
-export function PublicRouters() {
+export function PublicRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="/auth" element={<Login />} />
-        <Route path="/auth/register" element={<Register />} />
+    <>
+      <Route path="/auth" element={<DefaultLayout />}>
+        <Route index element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Route>
-    </Routes>
+    </>
   )
 }

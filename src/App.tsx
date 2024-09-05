@@ -2,12 +2,12 @@ import './index.css'
 
 import { BrowserRouter } from 'react-router-dom'
 
-import { PublicRouters } from './routes/public-routes'
+import { Routes } from './routes'
 
 function App() {
   return (
     <BrowserRouter>
-      <PublicRouters />
+      <Routes />
     </BrowserRouter>
 
   )
