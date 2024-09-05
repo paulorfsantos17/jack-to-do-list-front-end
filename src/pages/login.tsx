@@ -102,6 +102,7 @@ export function Login() {
             id="password"
             placeholder="Digite sua senha"
             error={errorsValidation.password}
+            type="password"
             onChange={handleInputChange}
           />
           {errorsRequest && (
