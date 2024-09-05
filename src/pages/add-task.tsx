@@ -1,4 +1,4 @@
-import { X } from '@phosphor-icons/react'
+import { Plus, X } from '@phosphor-icons/react'
 
 import { Button } from '../components/button'
 import { HeadingTitle } from '../components/heading-title'
@@ -53,6 +53,7 @@ export function AddTask() {
             </Button.Root>
             <Button.Root variant="success">
               <Button.Title title="Adicionar" />
+              {!isScreenMd && <Plus fontSize={30} className="text-white" />}
             </Button.Root>
 
           </div>
