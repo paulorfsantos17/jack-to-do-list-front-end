@@ -16,7 +16,7 @@ export const TextArea = forwardRef(({
 }: InputProps,
 ref: Ref<HTMLTextAreaElement>) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="w-full flex flex-col gap-2">
       <label
         htmlFor={id}
         className="text-2xl text-gray-700"
