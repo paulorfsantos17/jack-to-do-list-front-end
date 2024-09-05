@@ -25,10 +25,11 @@ ref: LegacyRef<HTMLInputElement>) => {
       </label>
       <input
         ref={ref}
-        {...rest}
         id={id}
         className="p-3 rounded-lg bg-gray-300 text-gray-600
-          placeholder:text-md  placeholder:text-gray-700"
+          placeholder:text-md  placeholder:text-gray-700
+          focus:outline-none focus:ring-gray-600 focus:ring-2"
+        {...rest}
       />
 
     </div>
