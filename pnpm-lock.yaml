@@ -29,6 +29,9 @@ importers:
       tailwindcss:
         specifier: ^3.4.10
         version: 3.4.10
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@rocketseat/eslint-config':
         specifier: ^3.0.12
@@ -869,8 +872,8 @@ packages:
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-d1afcb43-20240903:
-    resolution: {integrity: sha512-/nFI+l7fwC5yg0VIPL9YmtlAPSbzOeeMW7cIcx5JEcsdE8SBN7uXKnsfik1yDQeGbQIgaQzN4nj5fNxfoVh7dQ==}
+  eslint-plugin-react-hooks@5.1.0-rc-4c58fce7-20240904:
+    resolution: {integrity: sha512-PDoulHvydL8q8QhhyQx9y7c0Ot79D/o53+/6GG/9stROV2iBteNl/n8WNxwdcVtaSrFJ2BXd/M1U2fyjhelUzA==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -1809,6 +1812,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -2103,7 +2109,7 @@ snapshots:
       '@eslint/js': 9.9.1
       '@types/eslint__js': 8.42.3
       eslint: 9.9.1(jiti@1.21.6)
-      eslint-plugin-react-hooks: 5.1.0-rc-d1afcb43-20240903(eslint@9.9.1(jiti@1.21.6))
+      eslint-plugin-react-hooks: 5.1.0-rc-4c58fce7-20240904(eslint@9.9.1(jiti@1.21.6))
       globals: 15.9.0
       neostandard: 0.11.4(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
       typescript-eslint: 8.4.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
@@ -2716,7 +2722,7 @@ snapshots:
     dependencies:
       eslint: 9.9.1(jiti@1.21.6)
 
-  eslint-plugin-react-hooks@5.1.0-rc-d1afcb43-20240903(eslint@9.9.1(jiti@1.21.6)):
+  eslint-plugin-react-hooks@5.1.0-rc-4c58fce7-20240904(eslint@9.9.1(jiti@1.21.6)):
     dependencies:
       eslint: 9.9.1(jiti@1.21.6)
 
@@ -3743,3 +3749,5 @@ snapshots:
   yaml@2.5.1: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@3.23.8: {}
