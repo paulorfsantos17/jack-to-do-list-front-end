@@ -45,7 +45,7 @@ export function Login() {
           Não tem uma conta?
           <Link
             to="/auth/register"
-            className="text-gray-400 hover:underline"
+            className="text-info hover:underline"
           >
           &nbsp;Crie a sua agora
           </Link>

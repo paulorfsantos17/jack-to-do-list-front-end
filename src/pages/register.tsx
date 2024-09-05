@@ -51,7 +51,7 @@ export function Register() {
           Já tem uma conta?
           <Link
             to="/auth"
-            className="text-gray-400 hover:underline"
+            className="text-info hover:underline"
           >
           &nbsp;Faça login aqui
           </Link>
