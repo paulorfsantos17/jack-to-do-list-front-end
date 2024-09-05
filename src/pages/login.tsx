@@ -33,7 +33,7 @@ export function Login() {
           />
 
           <div className="w-full flex justify-center">
-            <Button.Root typeStyle="info">
+            <Button.Root variant="info">
               <Button.Title title="Entrar" />
             </Button.Root>
           </div>
