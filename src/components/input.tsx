@@ -1,12 +1,12 @@
 import {
   forwardRef,
   InputHTMLAttributes,
-  LegacyRef,
+  Ref,
 } from 'react'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   title: string
-
+  id: string
 }
 
 export const Input = forwardRef(({
@@ -14,7 +14,7 @@ export const Input = forwardRef(({
   id,
   ...rest
 }: InputProps,
-ref: LegacyRef<HTMLInputElement>) => {
+ref: Ref<HTMLInputElement>) => {
   return (
     <div className="flex flex-col gap-2">
       <label
