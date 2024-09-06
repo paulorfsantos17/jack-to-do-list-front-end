@@ -7,11 +7,13 @@ import {
 type InputProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   title: string
   id: string
+  error?: string
 }
 
 export const TextArea = forwardRef(({
   title,
   id,
+  error,
   ...rest
 }: InputProps,
 ref: Ref<HTMLTextAreaElement>) => {
@@ -26,12 +28,16 @@ ref: Ref<HTMLTextAreaElement>) => {
       <textarea
         ref={ref}
         id={id}
+        name={id}
         className="p-3 h-48 rounded-lg bg-gray-300 text-gray-600
           placeholder:text-md  placeholder:text-gray-700
           focus:outline-none focus:ring-gray-600 focus:ring-2
           resize-none"
         {...rest}
       />
+      {error && (
+        <p className="text-danger text-xs">{error}</p>
+      )}
 
     </div>
   )
