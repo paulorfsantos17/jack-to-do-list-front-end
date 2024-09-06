@@ -46,6 +46,26 @@ export function tasksReducer(
         ...state,
       }
     }
+    case 'EDIT_TASK': {
+      const taskIndex = state.tasksList.findIndex(
+        (task) => task.id === action.payload.updateTask.id,
+      )
+
+      if (taskIndex === -1) {
+        return state
+      }
+
+      const updateTask = state.tasksList[taskIndex]
+
+      updateTask.title = action.payload.updateTask.title
+      updateTask.description = action.payload.updateTask.description
+
+      state.tasksList[taskIndex] = updateTask
+
+      return {
+        ...state,
+      }
+    }
     default:
       return state
   }
