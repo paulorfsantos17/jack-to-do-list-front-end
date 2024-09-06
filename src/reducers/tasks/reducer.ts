@@ -1,4 +1,4 @@
-import type { TaskDto } from '../../dto/taskDto'
+import type { TaskDto } from '../../dto/task-dto'
 import type { Actions } from './actions'
 
 interface TasksListState {
@@ -14,6 +14,12 @@ export function tasksReducer(
       return {
         tasksList: action.payload.tasks,
       }
+    case 'ADD_TASK': {
+      return {
+        ...state,
+        tasksList: [...state.tasksList, action.payload.task],
+      }
+    }
     default:
       return state
   }

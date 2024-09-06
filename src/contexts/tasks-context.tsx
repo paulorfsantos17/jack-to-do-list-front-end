@@ -1,19 +1,22 @@
 import { createContext, ReactNode, useEffect, useReducer } from 'react'
 
-import type { TaskDto } from '../dto/taskDto'
-import { fetchAllTasks } from '../http/fetchAllTasks'
-import { actionsTypes } from '../reducers/tasks/actions'
+import type { createTaskDTO } from '../dto/create-task-dto'
+import type { TaskDto } from '../dto/task-dto'
+import { createTaskFromApi } from '../http/create-task'
+import { fetchAllTasks } from '../http/fetch-all-task'
+import { addTaskAction, setTasksAction } from '../reducers/tasks/actions'
 import { tasksReducer } from '../reducers/tasks/reducer'
 
 interface TasksContextType {
   tasksList: TaskDto[]
+  addTask: (createTask : createTaskDTO) => void
 }
 
 interface TasksProviderProps {
   children: ReactNode
 }
 
-export const TasksContext = createContext<TasksContextType>({ tasksList: [] })
+export const TasksContext = createContext({ } as TasksContextType)
 
 export function TasksProvider({ children }: TasksProviderProps) {
   const [tasksListState, dispatch] = useReducer(
@@ -23,10 +26,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
   )
 
   function setTasks(tasks: TaskDto[]) {
-    dispatch({
-      type: actionsTypes.SET_TASKS,
-      payload: { tasks },
-    })
+    dispatch(setTasksAction(tasks))
   }
 
   async function fetchTasksFromAPI() {
@@ -39,11 +39,20 @@ export function TasksProvider({ children }: TasksProviderProps) {
     }
   }
 
+  async function addTask(taskCreate : createTaskDTO) {
+    const task = await createTaskFromApi(taskCreate)
+    dispatch(addTaskAction(task))
+  }
+
   useEffect(() => {
     fetchTasksFromAPI()
   }, [])
   return (
-    <TasksContext.Provider value={{ tasksList: tasksListState.tasksList }}>
+    <TasksContext.Provider value={{
+      tasksList: tasksListState.tasksList,
+      addTask,
+    }}
+    >
       {children}
     </TasksContext.Provider>
   )
