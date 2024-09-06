@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import type { EditTaskDTO } from '../../dto/edit-task-dto'
 import type { TaskDto } from '../../dto/task-dto'
 
 export enum actionsTypes {
@@ -6,6 +7,7 @@ export enum actionsTypes {
   SET_TASKS = 'SET_TASKS',
   REMOVE_TASKS = 'REMOVE_TASKS',
   COMPLETED_TASK = 'COMPLETED_TASK',
+  EDIT_TASK = 'EDIT_TASK',
 }
 
 export type Actions = |
@@ -21,6 +23,10 @@ export type Actions = |
   type: actionsTypes.REMOVE_TASKS |
         actionsTypes.COMPLETED_TASK,
   payload: { taskId: string }
+} |
+{
+  type: actionsTypes.EDIT_TASK,
+  payload: { updateTask: EditTaskDTO }
 }
 
 export function addTaskAction(task: TaskDto): Actions {
@@ -46,5 +52,12 @@ export function completedTasksAction(taskId:string): Actions {
   return {
     type: actionsTypes.COMPLETED_TASK,
     payload: { taskId },
+  }
+}
+
+export function editTaskAction(updateTask: EditTaskDTO): Actions {
+  return {
+    type: actionsTypes.EDIT_TASK,
+    payload: { updateTask },
   }
 }
