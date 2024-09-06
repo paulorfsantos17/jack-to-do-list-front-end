@@ -25,8 +25,9 @@ export function ManagerTask() {
     <div className="lg:bg-gray-400 h-screen
     flex justify-center  items-center"
     >
-      <div className="w-full flex flex-col  py-10 px-6 gap-8
-        lg:bg-white sm:w-9/12 lg:rounded-lg lg:h-4/5
+      <div className="w-full h-full flex flex-col justify-start
+          py-10 px-6 gap-8 lg:bg-white sm:w-9/12 lg:rounded-lg
+          lg:h-4/5
         "
       >
         <div className="flex flex-col items-center gap-4">
@@ -47,6 +48,12 @@ export function ManagerTask() {
 
           </Button.Root>
         </div>
+
+        {tasksList.length === 0 && (
+          <p className="text-2xl text-center mt-28">
+            A lista de tarefas está vazia adicione uma tarefa
+          </p>
+        )}
 
         <div className="flex flex-col gap-6">
           {tasksList.map(task =>
