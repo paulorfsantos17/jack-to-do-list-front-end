@@ -83,8 +83,9 @@ export function AddTask() {
     <div className="lg:bg-gray-400 h-screen
     flex justify-center lg:items-center "
     >
-      <div className="w-full flex flex-col items-center  py-10 px-6 gap-8
-        lg:bg-white sm:w-9/12 lg:rounded-lg lg:h-4/5
+      <div className="w-full  flex flex-col items-center
+          py-10 px-6 gap-8
+        lg:bg-white sm:w-9/12 lg:rounded-lg lg:min-h-[80%]
         "
       >
         {isScreenMd && (
@@ -104,7 +105,7 @@ export function AddTask() {
         )}
 
         <HeadingTitle title="Nova Tarefa" size="small" />
-        <form className="w-full flex flex-col gap-6">
+        <form className="w-full h-full flex flex-col gap-6">
           <Input
             id="title"
             title="Titulo:"
@@ -120,11 +121,11 @@ export function AddTask() {
             error={errorsValidation.description}
           />
 
-          <div className="w-full flex justify-end gap-6">
+          {errorsRequest && (
+            <p className="text-danger text-md text-center">{errorsRequest}</p>
+          )}
 
-            {errorsRequest && (
-              <p className="text-danger text-md text-center">{errorsRequest}</p>
-            )}
+          <div className="w-full flex justify-end gap-6">
 
             <Button.Root
               variant="danger"
