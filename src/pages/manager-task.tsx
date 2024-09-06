@@ -3,9 +3,11 @@ import { Plus } from '@phosphor-icons/react'
 import { Button } from '../components/button'
 import { HeadingTitle } from '../components/heading-title'
 import { TaskCard } from '../components/task-card'
+import { useTasksContext } from '../hooks/useTasksContext'
 import useWindowSize from '../hooks/useWindowSize'
 
 export function ManagerTask() {
+  const { tasksList } = useTasksContext()
   const { width } = useWindowSize()
 
   const isScreenMd = width > 768
@@ -37,9 +39,7 @@ export function ManagerTask() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
+          {tasksList.map(task => <TaskCard key={task.id} title={task.title} />)}
         </div>
       </div>
     </div>

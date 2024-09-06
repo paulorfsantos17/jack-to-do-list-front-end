@@ -3,7 +3,11 @@ import { useState } from 'react'
 
 import { Button } from './button'
 
-export function TaskCard() {
+interface TaskCardProps {
+  title: string
+}
+
+export function TaskCard({ title }: TaskCardProps) {
   const [isChecked, setIsChecked] = useState<boolean>(true)
   const styleTitle = isChecked
     ? 'text-xl text-gray-400 line-through'
@@ -29,7 +33,7 @@ export function TaskCard() {
       </button>
 
       <span className={styleTitle}>
-        Titulo da Tarefa
+        {title}
       </span>
 
       <div className="flex gap-3">
