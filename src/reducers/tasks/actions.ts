@@ -5,6 +5,7 @@ export enum actionsTypes {
   ADD_TASK = 'ADD_TASK',
   SET_TASKS = 'SET_TASKS',
   REMOVE_TASKS = 'REMOVE_TASKS',
+  COMPLETED_TASK = 'COMPLETED_TASK',
 }
 
 export type Actions = |
@@ -17,7 +18,8 @@ export type Actions = |
   payload: { tasks: TaskDto[] }
 } |
 {
-  type: actionsTypes.REMOVE_TASKS,
+  type: actionsTypes.REMOVE_TASKS |
+        actionsTypes.COMPLETED_TASK,
   payload: { taskId: string }
 }
 
@@ -37,6 +39,12 @@ export function setTasksAction(tasks: TaskDto[]): Actions {
 export function removeTasksAction(taskId:string): Actions {
   return {
     type: actionsTypes.REMOVE_TASKS,
+    payload: { taskId },
+  }
+}
+export function completedTasksAction(taskId:string): Actions {
+  return {
+    type: actionsTypes.COMPLETED_TASK,
     payload: { taskId },
   }
 }
