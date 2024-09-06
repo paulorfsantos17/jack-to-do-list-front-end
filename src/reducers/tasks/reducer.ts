@@ -29,6 +29,23 @@ export function tasksReducer(
         tasksList,
       }
     }
+    case 'COMPLETED_TASK': {
+      const taskIndex = state.tasksList.findIndex(
+        (task) => task.id === action.payload.taskId,
+      )
+
+      if (taskIndex === -1) {
+        return state
+      }
+
+      const updateTask = state.tasksList[taskIndex]
+      updateTask.completionDate = new Date()
+      state.tasksList[taskIndex] = updateTask
+
+      return {
+        ...state,
+      }
+    }
     default:
       return state
   }
