@@ -20,6 +20,15 @@ export function tasksReducer(
         tasksList: [...state.tasksList, action.payload.task],
       }
     }
+    case 'REMOVE_TASKS': {
+      const tasksList = state.tasksList.filter(
+        (task) => task.id !== action.payload.taskId,
+      )
+      return {
+        ...state,
+        tasksList,
+      }
+    }
     default:
       return state
   }
