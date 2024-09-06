@@ -2,11 +2,13 @@ import { createContext, ReactNode, useEffect, useReducer } from 'react'
 
 import type { createTaskDTO } from '../dto/create-task-dto'
 import type { TaskDto } from '../dto/task-dto'
+import { completedTaskFromApi } from '../http/completed-task'
 import { createTaskFromApi } from '../http/create-task'
 import { deleteTaskFromApi } from '../http/delete-task '
 import { fetchAllTasks } from '../http/fetch-all-task'
 import {
   addTaskAction,
+  completedTasksAction,
   removeTasksAction,
   setTasksAction,
 } from '../reducers/tasks/actions'
@@ -16,6 +18,7 @@ interface TasksContextType {
   tasksList: TaskDto[]
   addTask: (createTask : createTaskDTO) => void
   removeTask: (taskId : string) => void
+  completedTask: (taskId : string) => void
 }
 
 interface TasksProviderProps {
@@ -28,7 +31,6 @@ export function TasksProvider({ children }: TasksProviderProps) {
   const [tasksListState, dispatch] = useReducer(
     tasksReducer,
     { tasksList: [] },
-
   )
 
   function setTasks(tasks: TaskDto[]) {
@@ -49,12 +51,20 @@ export function TasksProvider({ children }: TasksProviderProps) {
     const task = await createTaskFromApi(taskCreate)
     dispatch(addTaskAction(task))
   }
+
   async function removeTask(taskId : string) {
     await deleteTaskFromApi(taskId)
     dispatch(removeTasksAction(taskId))
   }
+  async function completedTask(taskId : string) {
+    await completedTaskFromApi(taskId)
+    dispatch(completedTasksAction(taskId))
+  }
 
   useEffect(() => {
+    console.log('🚀 ~ TasksProvider ~ tasksListState:', tasksListState)
+    console.log('🚀 ~ TasksProvider ~ tasksListState:', tasksListState)
+    console.log('🚀 ~ TasksProvider ~ tasksListState:', tasksListState)
     fetchTasksFromAPI()
   }, [])
   return (
@@ -62,6 +72,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
       tasksList: tasksListState.tasksList,
       addTask,
       removeTask,
+      completedTask,
     }}
     >
       {children}

@@ -8,14 +8,14 @@ import { Button } from './button'
 interface TaskCardProps {
   id: string
   title: string
-  completedTask?: Date | null
+  completedDateTask?: Date | null
 }
 
-export function TaskCard({ title, completedTask, id }: TaskCardProps) {
-  const { removeTask } = useTasksContext()
+export function TaskCard({ title, completedDateTask, id }: TaskCardProps) {
+  const { removeTask, completedTask } = useTasksContext()
   const navigate = useNavigate()
 
-  const isCompletedTask = !!completedTask
+  const isCompletedTask = !!completedDateTask
 
   const [isChecked, setIsChecked] = useState<boolean>(isCompletedTask)
 
@@ -24,7 +24,12 @@ export function TaskCard({ title, completedTask, id }: TaskCardProps) {
     : 'text-xl text-gray-700'
 
   function handleCompletedTask() {
-    setIsChecked(!isChecked)
+    try {
+      completedTask(id)
+      setIsChecked(!isChecked)
+    } catch (error) {
+      console.log('🚀 ~ handleCompletedTask ~ error:', error)
+    }
   }
 
   function handleEditTask() {
@@ -43,6 +48,7 @@ export function TaskCard({ title, completedTask, id }: TaskCardProps) {
     <div className=" w-full flex  items-center justify-between">
       <button
         onClick={handleCompletedTask}
+        disabled={isChecked}
         className="w-9 h-9
       flex items-center justify-center
       border-success border-2 rounded-lg"
@@ -70,6 +76,7 @@ export function TaskCard({ title, completedTask, id }: TaskCardProps) {
         <Button.Root
           typeStyle="icons"
           variant="outline"
+          disabled={isChecked}
           onClick={handleEditTask}
           className="text-info"
         >

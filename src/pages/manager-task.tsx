@@ -53,7 +53,7 @@ export function ManagerTask() {
             <TaskCard
               key={task.id}
               title={task.title}
-              completedTask={task.completionDate}
+              completedDateTask={task.completionDate}
               id={task.id}
             />,
           )}
