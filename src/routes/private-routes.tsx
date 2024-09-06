@@ -15,8 +15,8 @@ export function PrivateRoutes() {
       >
         <Route path="/" element={<ManagerTask />} />
         <Route path="/add-task" element={<AddTask />} />
-        <Route path="/edit-task" element={<EditTask />} />
-        <Route path="/task" element={<Task />} />
+        <Route path="/edit-task/:id" element={<EditTask />} />
+        <Route path="/task/:id" element={<Task />} />
       </Route>
 
     </>
