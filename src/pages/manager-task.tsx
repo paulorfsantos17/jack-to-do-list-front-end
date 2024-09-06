@@ -39,7 +39,14 @@ export function ManagerTask() {
         </div>
 
         <div className="flex flex-col gap-6">
-          {tasksList.map(task => <TaskCard key={task.id} title={task.title} />)}
+          {tasksList.map(task =>
+            <TaskCard
+              key={task.id}
+              title={task.title}
+              completedTask={task.completionDate}
+              id={task.id}
+            />,
+          )}
         </div>
       </div>
     </div>

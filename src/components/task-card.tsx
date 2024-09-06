@@ -1,20 +1,32 @@
 import { Check, Pencil, Trash } from '@phosphor-icons/react'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { Button } from './button'
 
 interface TaskCardProps {
+  id: string
   title: string
+  completedTask?: Date | null
 }
 
-export function TaskCard({ title }: TaskCardProps) {
-  const [isChecked, setIsChecked] = useState<boolean>(true)
+export function TaskCard({ title, completedTask, id }: TaskCardProps) {
+  const navigate = useNavigate()
+
+  const isCompletedTask = !!completedTask
+
+  const [isChecked, setIsChecked] = useState<boolean>(isCompletedTask)
+
   const styleTitle = isChecked
     ? 'text-xl text-gray-400 line-through'
     : 'text-xl text-gray-700'
 
   function handleCompletedTask() {
     setIsChecked(!isChecked)
+  }
+
+  function handleEditTask() {
+    navigate(`/edit-task/${id}`)
   }
 
   return (
@@ -32,9 +44,9 @@ export function TaskCard({ title }: TaskCardProps) {
           />}
       </button>
 
-      <span className={styleTitle}>
+      <Link to={`task/${id}`} className={styleTitle}>
         {title}
-      </span>
+      </Link>
 
       <div className="flex gap-3">
         <Button.Root
@@ -47,6 +59,7 @@ export function TaskCard({ title }: TaskCardProps) {
         <Button.Root
           typeStyle="icons"
           variant="outline"
+          onClick={handleEditTask}
           className="text-info"
         >
           <Pencil fontSize={30} />
