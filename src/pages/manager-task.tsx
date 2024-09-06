@@ -17,13 +17,15 @@ export function ManagerTask() {
     ? 'default'
     : 'icons'
 
+  const isEmptyTaskList = tasksList.length === 0
+
   function handleNavigateAddTask() {
     navigate('add-task')
   }
 
   return (
     <div className="lg:bg-gray-400 h-screen
-    flex justify-center  items-center"
+      flex justify-center  items-center"
     >
       <div className="w-full h-full flex flex-col justify-start
           py-10 px-6 gap-8 lg:bg-white sm:w-9/12 lg:rounded-lg
@@ -49,7 +51,7 @@ export function ManagerTask() {
           </Button.Root>
         </div>
 
-        {tasksList.length === 0 && (
+        {isEmptyTaskList && (
           <p className="text-2xl text-center mt-28">
             A lista de tarefas está vazia adicione uma tarefa
           </p>
