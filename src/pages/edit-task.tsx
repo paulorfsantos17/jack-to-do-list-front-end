@@ -46,11 +46,15 @@ export function EditTask() {
   const [errorsRequest, setErrorRequest] =
   useState<string>('')
 
+  const isEmptyTaskList = tasksList.length > 0
+
   const getTask = useCallback(() => {
     if (!id) {
       return setErrorRequest('Tarefa não encontrada.')
     }
-    const task = tasksList.find(task => task.id === id)
+    const task = tasksList.find(task => {
+      return task.id === id
+    })
 
     if (!task) {
       return setErrorRequest('Tarefa não encontrada.')
@@ -71,10 +75,10 @@ export function EditTask() {
   >,
   ) {
     const { name, value } = event.target
-    setFormData({
-      ...formData,
+    setFormData(prevData => ({
+      ...prevData,
       [name]: value,
-    })
+    }))
   }
 
   async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
@@ -98,16 +102,22 @@ export function EditTask() {
     }
   }
 
+  function handleNavigateManagerTask() {
+    navigate('/')
+  }
+
   useEffect(() => {
-    getTask()
-  }, [getTask])
+    if (isEmptyTaskList) {
+      getTask()
+    }
+  }, [getTask, tasksList, isEmptyTaskList])
 
   return (
     <div className="lg:bg-gray-400 h-screen
     flex justify-center lg:items-center "
     >
       <div className="w-full flex flex-col items-center  py-10 px-6 gap-8
-        lg:bg-white sm:w-9/12 lg:rounded-lg lg:h-4/5
+        lg:bg-white sm:w-9/12 lg:rounded-lg lg:min-h-[80%]
         "
       >
         {isScreenMd && (
@@ -115,6 +125,7 @@ export function EditTask() {
             <Button.Root
               variant="outline"
               typeStyle="closed"
+              onClick={handleNavigateManagerTask}
             >
               <X
                 fontSize={40}
@@ -149,7 +160,10 @@ export function EditTask() {
           )}
 
           <div className="w-full flex justify-end gap-6">
-            <Button.Root variant="danger">
+            <Button.Root
+              variant="danger"
+              onClick={handleNavigateManagerTask}
+            >
               <Button.Title title="Cancelar" />
             </Button.Root>
             <Button.Root
