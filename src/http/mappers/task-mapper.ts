@@ -1,4 +1,4 @@
-import { TaskDto } from '../../dto/taskDto'
+import { TaskDto } from '../../dto/task-dto'
 import { TaskApiResponse } from '../types/task-api-response'
 
 export function taskMapper(task : TaskApiResponse) : TaskDto {
