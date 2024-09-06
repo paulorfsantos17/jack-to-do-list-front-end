@@ -3,13 +3,19 @@ import { createContext, ReactNode, useEffect, useReducer } from 'react'
 import type { createTaskDTO } from '../dto/create-task-dto'
 import type { TaskDto } from '../dto/task-dto'
 import { createTaskFromApi } from '../http/create-task'
+import { deleteTaskFromApi } from '../http/delete-task '
 import { fetchAllTasks } from '../http/fetch-all-task'
-import { addTaskAction, setTasksAction } from '../reducers/tasks/actions'
+import {
+  addTaskAction,
+  removeTasksAction,
+  setTasksAction,
+} from '../reducers/tasks/actions'
 import { tasksReducer } from '../reducers/tasks/reducer'
 
 interface TasksContextType {
   tasksList: TaskDto[]
   addTask: (createTask : createTaskDTO) => void
+  removeTask: (taskId : string) => void
 }
 
 interface TasksProviderProps {
@@ -43,6 +49,10 @@ export function TasksProvider({ children }: TasksProviderProps) {
     const task = await createTaskFromApi(taskCreate)
     dispatch(addTaskAction(task))
   }
+  async function removeTask(taskId : string) {
+    await deleteTaskFromApi(taskId)
+    dispatch(removeTasksAction(taskId))
+  }
 
   useEffect(() => {
     fetchTasksFromAPI()
@@ -51,6 +61,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
     <TasksContext.Provider value={{
       tasksList: tasksListState.tasksList,
       addTask,
+      removeTask,
     }}
     >
       {children}

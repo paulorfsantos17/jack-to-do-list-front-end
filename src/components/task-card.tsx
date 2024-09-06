@@ -2,6 +2,7 @@ import { Check, Pencil, Trash } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { useTasksContext } from '../hooks/useTasksContext'
 import { Button } from './button'
 
 interface TaskCardProps {
@@ -11,6 +12,7 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ title, completedTask, id }: TaskCardProps) {
+  const { removeTask } = useTasksContext()
   const navigate = useNavigate()
 
   const isCompletedTask = !!completedTask
@@ -27,6 +29,14 @@ export function TaskCard({ title, completedTask, id }: TaskCardProps) {
 
   function handleEditTask() {
     navigate(`/edit-task/${id}`)
+  }
+
+  function handleRemoveTask() {
+    try {
+      removeTask(id)
+    } catch (error) {
+      console.log('🚀 ~ handleRemoveTask ~ error:', error)
+    }
   }
 
   return (
@@ -52,6 +62,7 @@ export function TaskCard({ title, completedTask, id }: TaskCardProps) {
         <Button.Root
           typeStyle="icons"
           variant="outline"
+          onClick={handleRemoveTask}
           className="text-danger"
         >
           <Trash fontSize={30} />
