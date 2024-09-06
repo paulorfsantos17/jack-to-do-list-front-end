@@ -1,4 +1,5 @@
 import { Plus } from '@phosphor-icons/react'
+import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../components/button'
 import { HeadingTitle } from '../components/heading-title'
@@ -7,6 +8,7 @@ import { useTasksContext } from '../hooks/useTasksContext'
 import useWindowSize from '../hooks/useWindowSize'
 
 export function ManagerTask() {
+  const navigate = useNavigate()
   const { tasksList } = useTasksContext()
   const { width } = useWindowSize()
 
@@ -14,6 +16,10 @@ export function ManagerTask() {
   const buttonTypeStyle = isScreenMd
     ? 'default'
     : 'icons'
+
+  function handleNavigateAddTask() {
+    navigate('add-task')
+  }
 
   return (
     <div className="lg:bg-gray-400 h-screen
@@ -28,7 +34,11 @@ export function ManagerTask() {
           <HeadingTitle title="Suas Tarefas" size="small" />
         </div>
         <div className="w-full flex justify-end">
-          <Button.Root variant="success" typeStyle={buttonTypeStyle}>
+          <Button.Root
+            variant="success"
+            typeStyle={buttonTypeStyle}
+            onClick={handleNavigateAddTask}
+          >
             {isScreenMd && <Button.Title title="Adicionar" />}
             <Plus
               fontSize={40}
