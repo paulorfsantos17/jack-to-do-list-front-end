@@ -50,10 +50,10 @@ export function AddTask() {
     >,
   ) {
     const { name, value } = event.target
-    setFormData({
-      ...formData,
+    setFormData(prevData => ({
+      ...prevData,
       [name]: value,
-    })
+    }))
   }
 
   async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
@@ -136,6 +136,7 @@ export function AddTask() {
             <Button.Root
               variant="success"
               onClick={handleSubmit}
+              type="submit"
             >
               <Button.Title title="Adicionar" />
               {!isScreenMd && <Plus fontSize={30} className="text-white" />}
