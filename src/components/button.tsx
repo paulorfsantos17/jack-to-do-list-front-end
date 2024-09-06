@@ -26,7 +26,7 @@ function Root({
 
   const typeButton : Record<string, string> = {
     default: 'w-52',
-    icons: 'w-10 h-10 p-2',
+    icons: 'min-w-10 h-10 p-2',
     closed: 'w-12 h-12 p-2',
   }
 
