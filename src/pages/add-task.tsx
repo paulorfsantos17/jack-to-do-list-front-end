@@ -1,4 +1,5 @@
 import { Plus, X } from '@phosphor-icons/react'
+import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../components/button'
 import { HeadingTitle } from '../components/heading-title'
@@ -7,9 +8,14 @@ import { TextArea } from '../components/text-area'
 import useWindowSize from '../hooks/useWindowSize'
 
 export function AddTask() {
+  const navigate = useNavigate()
   const { width } = useWindowSize()
 
   const isScreenMd = width < 1024
+
+  function handleNavigateManagerTask() {
+    navigate('/')
+  }
 
   return (
     <div className="lg:bg-gray-400 h-screen
@@ -24,6 +30,7 @@ export function AddTask() {
             <Button.Root
               variant="outline"
               typeStyle="closed"
+              onClick={handleNavigateManagerTask}
             >
               <X
                 fontSize={40}
@@ -48,7 +55,10 @@ export function AddTask() {
           />
 
           <div className="w-full flex justify-end gap-6">
-            <Button.Root variant="danger">
+            <Button.Root
+              variant="danger"
+              onClick={handleNavigateManagerTask}
+            >
               <Button.Title title="Cancelar" />
             </Button.Root>
             <Button.Root variant="success">
