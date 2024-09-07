@@ -13,6 +13,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 export const Input = forwardRef(({
   title,
   id,
+  error,
   ...rest
 }: InputProps,
 ref: Ref<HTMLInputElement>) => {
@@ -33,8 +34,8 @@ ref: Ref<HTMLInputElement>) => {
           focus:outline-none focus:ring-gray-600 focus:ring-2"
         {...rest}
       />
-      {rest.error && (
-        <p className="text-danger text-xs">{rest.error}</p>
+      {error && (
+        <p className="text-danger text-xs">{error}</p>
       )}
 
     </div>
