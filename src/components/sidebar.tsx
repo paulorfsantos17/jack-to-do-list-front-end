@@ -15,11 +15,10 @@ export function SideBar() {
   const navigate = useNavigate()
   const { width } = useWindowSize()
   const [isViewSideBar, setIsViewSideBar] = useState(false)
-  console.log('🚀 ~ SideBar ~ isViewSideBar:', isViewSideBar)
 
   const hasSideBarView = !isViewSideBar && 'hidden'
 
-  function toggleViewSideBar() {
+  function handleToggleViewSideBar() {
     setIsViewSideBar(!isViewSideBar)
   }
 
@@ -49,7 +48,7 @@ export function SideBar() {
         <Button.Root
           typeStyle="icons"
           variant="outline"
-          onClick={toggleViewSideBar}
+          onClick={handleToggleViewSideBar}
         >
           <List size={40} className="text-gray-700" />
         </Button.Root>
@@ -69,7 +68,9 @@ export function SideBar() {
         </div>
 
       </div>
-      <div className={`fixed top-0 h-full min-w-64 bg-gray-700
+      <div
+        data-testid="side-bar"
+        className={`fixed top-0 h-full min-w-64 bg-gray-700
           flex flex-col items-center  p-8 pt-2 pr-1
           ${hasSideBarView}`}
       >
@@ -77,7 +78,7 @@ export function SideBar() {
           <Button.Root
             typeStyle="icons"
             variant="outline"
-            onClick={toggleViewSideBar}
+            onClick={handleToggleViewSideBar}
           >
             <X size={40} className="text-white" />
           </Button.Root>
