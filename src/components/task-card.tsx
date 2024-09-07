@@ -49,6 +49,7 @@ export function TaskCard({ title, completedDateTask, id }: TaskCardProps) {
       <button
         onClick={handleCompletedTask}
         disabled={isChecked}
+        aria-label="check"
         className="w-9 h-9
       flex items-center justify-center
       border-success border-2 rounded-lg"
@@ -69,6 +70,7 @@ export function TaskCard({ title, completedDateTask, id }: TaskCardProps) {
           typeStyle="icons"
           variant="outline"
           onClick={handleRemoveTask}
+          aria-label="remove"
           className="text-danger"
         >
           <Trash fontSize={30} />
@@ -77,6 +79,7 @@ export function TaskCard({ title, completedDateTask, id }: TaskCardProps) {
           typeStyle="icons"
           variant="outline"
           disabled={isChecked}
+          aria-label="edit"
           onClick={handleEditTask}
           className="text-info"
         >
