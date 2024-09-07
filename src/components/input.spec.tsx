@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
@@ -19,12 +20,12 @@ describe('Heading Title Component', () => {
       expect(input).toHaveAttribute('name', 'id')
     })
 
-  it('renders Input with error show error use prop error and default class',
+  it('renders Input with error show errorMessage use prop error and default class',
     () => {
       render(<Input title="Title" id="id" error="error" />)
 
-      const error = screen.getByText('error')
-      expect(error).toBeInTheDocument()
-      expect(error).toHaveClass('text-danger text-xs')
+      const errorMessage = screen.getByText('error')
+      expect(errorMessage).toBeInTheDocument()
+      expect(errorMessage).toHaveClass('text-danger text-xs')
     })
 })
