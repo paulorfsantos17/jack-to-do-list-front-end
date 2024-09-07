@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { Heading } from './heading'
 
 describe('Heading Title Component', () => {
-  it('renders HeadingTitle value size default and class default', () => {
+  it('renders Heading value class default', () => {
     render(<Heading title="Title" subTitle="description" />)
     const title = screen.getByText('Title')
     const subTitle = screen.getByText('description')
