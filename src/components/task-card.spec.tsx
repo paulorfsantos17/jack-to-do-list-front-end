@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, BrowserRouterProps, LinkProps } from 'react-router-dom'
 import { describe, expect, it, vi } from 'vitest'
 
 import { TaskCard } from './task-card'
@@ -16,8 +16,8 @@ const navigateMock = vi.fn()
 vi.mock('react-router-dom', () => ({
   ...vi.importActual('react-router-dom'),
   useNavigate: () => navigateMock,
-  BrowserRouter: (props: any) => <div>{props.children}</div>,
-  Link: (props: any) => <a {...props}>{props.children}</a>,
+  BrowserRouter: (props: BrowserRouterProps) => <div>{props.children}</div>,
+  Link: (props: LinkProps) => <a {...props}>{props.children}</a>,
 }))
 
 describe('TaskCard Component', () => {
