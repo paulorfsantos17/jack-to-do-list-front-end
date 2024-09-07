@@ -5,10 +5,12 @@ import { TasksProvider } from '../contexts/tasks-context'
 
 export function ManagerTaskLayout() {
   return (
-    <div className="h-screen bg-white">
+    <div className="h-screen w-screen bg-white lg:flex">
       <TasksProvider>
         <SideBar />
-        <Outlet />
+        <div className="w-full flex justify-center mt-10">
+          <Outlet />
+        </div>
       </TasksProvider>
     </div>
   )
