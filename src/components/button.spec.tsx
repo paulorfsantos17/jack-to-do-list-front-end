@@ -27,6 +27,16 @@ describe('Button Component', () => {
     const button = screen.getByText('Click me')
     expect(button).toHaveClass('w-52')
   })
+  it('render Root with correct Title class', () => {
+    render(
+      <Button.Root>
+        <Button.Title title="Click me" />
+      </Button.Root>,
+    )
+
+    const button = screen.getByText('Click me')
+    expect(button).toHaveClass('text-white text-xl font-bold')
+  })
 
   it('calls onClick handler when clicked', async () => {
     const handleClick = vi.fn()
