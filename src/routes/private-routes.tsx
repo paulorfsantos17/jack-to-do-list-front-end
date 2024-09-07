@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom'
 
-import LayoutPrivateRoutes from '../layout/layout-private-routes'
+import { ManagerTaskLayout } from '../layout/manager-task-layout'
 import { AddTask } from '../pages/add-task'
 import { EditTask } from '../pages/edit-task'
 import { ManagerTask } from '../pages/manager-task'
@@ -11,7 +11,7 @@ export function PrivateRoutes() {
     <>
 
       <Route
-        path="/" element={<LayoutPrivateRoutes />}
+        path="/" element={<ManagerTaskLayout />}
       >
         <Route path="/" element={<ManagerTask />} />
         <Route path="/add-task" element={<AddTask />} />
