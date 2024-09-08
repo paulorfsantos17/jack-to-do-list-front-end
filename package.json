@@ -10,7 +10,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
-    "dev:test": "vite --port 15003 --mode test",
+    "dev:test": "vite --port 50789 --mode test",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -45,7 +45,8 @@
     "typescript": "^5.5.4",
     "vite": "^5.4.1",
     "vitest": "^2.0.5"
-  }, "msw": {
+  },
+  "msw": {
     "workerDirectory": [
       "public"
     ]
