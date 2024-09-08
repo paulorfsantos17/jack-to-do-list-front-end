@@ -1,4 +1,4 @@
-import { expect, locator, test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 // usa o estado do login antes de iniciar o test
 test.use({ storageState: 'storageState.json' })
