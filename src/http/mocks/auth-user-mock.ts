@@ -12,10 +12,8 @@ export const authUserMock = http.post<
     email === 'paulo@example.com' &&
     password === 'password'
   ) {
-    return new HttpResponse('{ access-token : token }', {
-      status: 201,
-      headers: { 'Content-Type': 'application/json' },
-
+    return HttpResponse.json({
+      access_token: 'token',
     })
   } else {
     return new HttpResponse(null, { status: 401 })

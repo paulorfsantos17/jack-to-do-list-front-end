@@ -10,6 +10,10 @@ test('authenticated successfully', async ({ page }) => {
   await page.getByRole('button', { name: 'Entrar' }).click()
 
   expect(page.url()).toContain('/')
+
+  const context = page.context()
+  // Salva o dados do login como cookie para autenticar as próximas rotas
+  await context.storageState({ path: 'storageState.json' })
 })
 test('authenticated Unauthorized', async ({ page }) => {
   await page.goto('/auth', { waitUntil: 'networkidle' })
