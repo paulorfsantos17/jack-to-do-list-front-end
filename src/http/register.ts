@@ -1,6 +1,6 @@
 import { api } from '../libs/axios'
 
-interface UserRequest {
+export interface UserRequest {
   name: string
   email: string
   password: string
