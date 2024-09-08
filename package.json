@@ -10,6 +10,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
+    "dev:test": "vite --port 15003 --mode test",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.7",
     "happy-dom": "^15.7.3",
+    "msw": "^2.4.4",
     "postcss": "^8.4.45",
     "react": "^18.3.1",
     "react-cookie": "^7.2.0",
@@ -26,10 +28,12 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.47.0",
     "@rocketseat/eslint-config": "^3.0.12",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^22.5.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -41,5 +45,9 @@
     "typescript": "^5.5.4",
     "vite": "^5.4.1",
     "vitest": "^2.0.5"
+  }, "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
