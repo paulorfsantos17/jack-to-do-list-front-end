@@ -10,6 +10,8 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
+    "test:e2e": "exec playwright test",
+    "test:e2e:ui": "exec playwright test --ui",
     "dev:test": "vite --port 50789 --mode test",
     "preview": "vite preview"
   },
