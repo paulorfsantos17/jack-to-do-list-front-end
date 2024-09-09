@@ -25,7 +25,7 @@ test('register error email exist', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Cadastrar' }).click()
 
-  expect(page.getByText('E-mail já esta em uso.')).toBeVisible()
+  await expect(page.getByText('E-mail já esta em uso.')).toBeVisible()
 })
 test('register error request', async ({ page }) => {
   await page.goto('/auth/register', { waitUntil: 'networkidle' })
@@ -38,5 +38,6 @@ test('register error request', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Cadastrar' }).click()
 
-  expect(page.getByText('Ocorreu um erro ao registrar a conta.')).toBeVisible()
+  await expect(page.getByText('Ocorreu um erro ao registrar a conta.'))
+    .toBeVisible()
 })
