@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test'
 
+// insere o cookie de autentificação usando o arquivo storageState.json
+// que está na raiz do projeto
 test.use({ storageState: 'storageState.json' })
-
 test.describe('manager task (e2e)', () => {
   test('Show List Task', async ({ page }) => {
     await page.goto('/')
