@@ -21,7 +21,7 @@ export function TaskCard({ title, completedDateTask, id }: TaskCardProps) {
 
   const styleTitle = isChecked
     ? 'text-xl text-gray-400 line-through'
-    : 'text-xl text-gray-700'
+    : 'text-xl text-gray-700 hover:text-gray-400'
 
   function handleCompletedTask() {
     try {

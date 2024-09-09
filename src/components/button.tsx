@@ -32,7 +32,8 @@ function Root({
 
   return (
     <button
-      className={`flex gap-4 items-center justify-around  h-14 rounded-lg 
+      className={`flex gap-4 items-center justify-around  h-14 rounded-lg  
+        hover:opacity-80
         ${typeButton[typeStyle]}
         ${backgroundClasses[variant]}`}
       {...rest}
