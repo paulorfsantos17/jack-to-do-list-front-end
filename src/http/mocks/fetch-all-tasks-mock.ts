@@ -10,7 +10,7 @@ export const fetchAllTasksMock = http.get<
   return HttpResponse.json({
     tasks: [
       {
-        id: '1',
+        id: 'ff744011-a507-43bc-80b7-5915deac1aec',
         title: 'Task 1',
         description: 'This is a sample task',
         createdAt: new Date(2024, 9, 2),
