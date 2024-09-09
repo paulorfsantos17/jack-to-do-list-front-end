@@ -5,7 +5,7 @@
       "value": "token",
       "domain": "localhost",
       "path": "/",
-      "expires": 1725889581.284864,
+      "expires": 1725890584.166914,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
