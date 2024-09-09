@@ -3,9 +3,9 @@ import { expect, test } from '@playwright/test'
 test('register successfully', async ({ page }) => {
   await page.goto('/auth/register', { waitUntil: 'networkidle' })
 
-  await page.getByLabel('Nome').fill('Paulo')
+  await page.getByLabel('Nome').fill('John Doe')
 
-  await page.getByLabel('E-mail').fill('paulo@example.com')
+  await page.getByLabel('E-mail').fill('johndoe@example.com')
 
   await page.getByLabel('Senha').fill('password')
 
@@ -17,7 +17,7 @@ test('register successfully', async ({ page }) => {
 test('register error email exist', async ({ page }) => {
   await page.goto('/auth/register', { waitUntil: 'networkidle' })
 
-  await page.getByLabel('Nome').fill('Paulo')
+  await page.getByLabel('Nome').fill('John Doe')
 
   await page.getByLabel('E-mail').fill('emailexist@example.com')
 

@@ -9,8 +9,8 @@ export const registerRestaurantMock = http.post<
   const { name, email, password } = await request.json()
 
   if (
-    name === 'Paulo' &&
-    email === 'paulo@example.com' &&
+    name === 'John Doe' &&
+    email === 'johndoe@example.com' &&
     password === 'password'
   ) {
     return new HttpResponse(null, { status: 201 })

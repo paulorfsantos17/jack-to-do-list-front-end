@@ -9,7 +9,7 @@ export const authUserMock = http.post<
   const { email, password } = await request.json()
 
   if (
-    email === 'paulo@example.com' &&
+    email === 'johndoe@example.com' &&
     password === 'password'
   ) {
     return HttpResponse.json({

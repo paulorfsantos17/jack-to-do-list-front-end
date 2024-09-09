@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 test('authenticated successfully', async ({ page }) => {
   await page.goto('/auth', { waitUntil: 'networkidle' })
 
-  await page.getByLabel('E-mail').fill('paulo@example.com')
+  await page.getByLabel('E-mail').fill('johndoe@example.com')
 
   await page.getByLabel('Senha').fill('password')
 
@@ -15,7 +15,7 @@ test('authenticated successfully', async ({ page }) => {
 test('authenticated Unauthorized', async ({ page }) => {
   await page.goto('/auth', { waitUntil: 'networkidle' })
 
-  await page.getByLabel('E-mail').fill('paulo@example.com')
+  await page.getByLabel('E-mail').fill('johndoe@example.com')
 
   await page.getByLabel('Senha').fill('passwordError')
 
