@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-    setupFiles: './src/tests/setup.ts',
+    setupFiles: './tests/setup.ts',
     environment: 'happy-dom',
     include: ['./src/**/*.spec.tsx'],
     coverage: {
