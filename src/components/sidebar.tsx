@@ -3,7 +3,9 @@ import { useCallback, useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { Link, useNavigate } from 'react-router-dom'
 
+import type { UserDTO } from '../dto/user-dto'
 import useWindowSize from '../hooks/useWindowSize'
+import { GetUserFromAPI } from '../http/get-user'
 import { Button } from './button'
 
 export function SideBar() {
@@ -15,6 +17,7 @@ export function SideBar() {
   const navigate = useNavigate()
   const { width } = useWindowSize()
   const [isViewSideBar, setIsViewSideBar] = useState(false)
+  const [user, setUser] = useState<UserDTO>({ } as UserDTO)
 
   const hasSideBarView = !isViewSideBar && 'hidden'
 
@@ -37,9 +40,19 @@ export function SideBar() {
     }
   }, [width])
 
+  const getUser = useCallback(async () => {
+    const user = await GetUserFromAPI()
+
+    setUser(user)
+  }, [])
+
   useEffect(() => {
     VerifySizeWidthWindow()
   }, [VerifySizeWidthWindow])
+
+  useEffect(() => {
+    getUser()
+  }, [getUser])
 
   return (
     <div className="lg:min-w-64">
@@ -85,7 +98,7 @@ export function SideBar() {
         </div>
 
         <span className="text-2xl text-white font-bold">
-          Paulo
+          {user.name}
         </span>
 
         <nav className=" w-full h-[80%] mt-10 flex flex-col">
